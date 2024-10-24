@@ -1,3 +1,11 @@
+create table foods
+(
+    seq      bigint auto_increment
+        primary key,
+    category enum ('동남아식', '양식', '일식', '중식', '한식') null,
+    name     varchar(255)                          null
+);
+
 INSERT INTO foods (category, name)
 VALUES ('한식', '김치찌개'),
        ('한식', '불고기'),

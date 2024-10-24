@@ -1,6 +1,7 @@
 spring:
   datasource:
-    url: jdbc:mariadb://localhost:3306/jeommechu
+#    url: jdbc:mariadb://localhost:3306/jeommechu
+    url: jdbc:mariadb://52.78.113.103:3306/jeommechu
     driver-class-name: org.mariadb.jdbc.Driver
     username: jmc
     password: qwer1234
