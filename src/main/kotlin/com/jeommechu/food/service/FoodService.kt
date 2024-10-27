@@ -6,11 +6,12 @@ import com.jeommechu.food.repository.FoodRepository
 import org.springframework.stereotype.Service
 
 @Service
-class FoodService(private val foodRepository: FoodRepository) {
+class FoodService(foodRepository: FoodRepository) {
 
     private val foodDomain = FoodDomain(foodRepository);
 
     fun getRandomFood(category: List<String>?): FoodResponseDto {
-        return FoodResponseDto.fromEntity(foodDomain.getRandomFood(category))
+        val randomFood = foodDomain.getRandomFood(category)
+        return FoodResponseDto.fromEntity(randomFood)
     }
 }

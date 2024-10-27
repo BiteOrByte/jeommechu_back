@@ -15,7 +15,8 @@ class FoodController(private val foodService: FoodService) {
 
     @GetMapping
     fun getFood(@RequestParam(required = false) category : List<String>?) :ResponseEntity<FoodResponseDto> {
-        return ResponseEntity(foodService.getRandomFood(category), HttpStatus.OK)
+        val randomFood = foodService.getRandomFood(category)
+        return ResponseEntity(randomFood, HttpStatus.OK)
     }
 
 }
