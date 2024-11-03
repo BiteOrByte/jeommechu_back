@@ -56,11 +56,11 @@ jobs:
             scp -i private_key.pem -o StrictHostKeyChecking=no -r /home/runner/work/jeommechu_back/jeommechu_back/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USERNAME }}/back
             
         # SSH로 EC2에 접속하여 웹 서버 재시작 (예: Nginx)
-        # - name: Restart Nginx
-        #   run: |
-        #     ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} << 'EOF'
-        #       sudo cp -f -r /home/${{ secrets.EC2_USERNAME }}/front/* /www/dev/web/
-        #       sudo rm -r /home/${{ secrets.EC2_USERNAME }}/front/*
-        #       sudo systemctl restart nginx
-        #     EOF
-        #     rm -f private_key.pem
+        - name: Restart Nginx
+          run: |
+            ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} << 'EOF'
+              sudo cp -f -r /home/${{ secrets.EC2_USERNAME }}/back/* /www/dev/api/
+              sudo rm -r /home/${{ secrets.EC2_USERNAME }}/back/*
+              sudo systemctl restart dev-api
+            EOF
+            rm -f private_key.pem
