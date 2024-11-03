@@ -57,7 +57,7 @@ jobs:
             scp -i private_key.pem -o StrictHostKeyChecking=no -r /home/runner/work/jeommechu_back/jeommechu_back/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USERNAME }}/back
             
         # SSH로 EC2에 접속하여 웹 서버 재시작 (예: Nginx)
-        - name: Restart Nginx
+        - name: Restart API Server
           run: |
             ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} << 'EOF'
               sudo cp -f -r /home/${{ secrets.EC2_USERNAME }}/back/* /www/prod/api/
