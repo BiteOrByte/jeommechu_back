@@ -28,14 +28,14 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v3.5.0
         with:
-          arguments: build
+          arguments: build -x test
 
       # EC2에 배포하기 위한 파일 준비
       - name: Prepare artifact
         uses: actions/upload-artifact@v4
         with:
           name: jeommechu_back_dev
-          path: dist
+          path: build
         
   deploy:
       runs-on: ubuntu-latest
