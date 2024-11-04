@@ -1,9 +1,10 @@
-name: Develop Deploy
+name: Prod Deploy
 
 on:
   push:
     branches:
-      - develop
+      - master
+      
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,7 +35,7 @@ jobs:
       - name: Prepare artifact
         uses: actions/upload-artifact@v4
         with:
-          name: jeommechu_back_dev
+          name: jeommechu_back
           path: build
         
   deploy:
@@ -46,7 +47,7 @@ jobs:
         - name: Download build artifact
           uses: actions/download-artifact@v4
           with:
-            name: jeommechu_back_dev
+            name: jeommechu_back
             
         # EC2 서버로 빌드된 파일을 업로드
         - name: Deploy to EC2
@@ -59,8 +60,8 @@ jobs:
         - name: Restart API Server
           run: |
             ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} << 'EOF'
-              sudo cp -f -r /home/${{ secrets.EC2_USERNAME }}/back/* /www/dev/api/
+              sudo cp -f -r /home/${{ secrets.EC2_USERNAME }}/back/* /www/prod/api/
               sudo rm -r /home/${{ secrets.EC2_USERNAME }}/back/*
-              sudo systemctl restart dev-api
+              sudo systemctl restart prod-api
             EOF
             rm -f private_key.pem

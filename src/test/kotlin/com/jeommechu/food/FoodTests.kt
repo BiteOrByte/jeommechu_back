@@ -22,7 +22,7 @@ class FoodTests {
     private lateinit var foodService: FoodService
 
     @Test
-    fun `getRandomFood Test`() {
+    fun `test get random food`() {
         val category = mutableListOf(FoodCategory.양식)
         val randomFood = foodService.getRandomFood(category)
         println("randomFood = $randomFood")
