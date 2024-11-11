@@ -15,11 +15,10 @@ class UserController (private val nicknameGeneratorService: NicknameGeneratorSer
 
     /**
      * 임시 닉네임 생성 api
-     * TODO 카카오 회원가입 진행시, 닉네임 생성 서비스 함수 로직 추가 예정
      */
     @GetMapping("/api/nickname")
     fun getNickname(): String {
-        return nicknameGeneratorService.generateNickname()
+        return nicknameGeneratorService.generateRandomNickname()
     }
 
     @GetMapping
