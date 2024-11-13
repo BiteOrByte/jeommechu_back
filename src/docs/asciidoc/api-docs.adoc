@@ -1,0 +1,33 @@
+= API Documentation Title
+:toc: macro
+:toclevels: 3
+:source-highlighter: highlightjs
+:highlightjs-theme: github
+:snippets: build/generated-snippets
+// :stylesheet: custom-style.css
+
+== Introduction
+
+This document provides an overview of the API and its endpoints.
+
+== Authentication
+
+=== Overview
+
+The API uses token-based authentication. You must include an `Authorization` header in your requests.
+
+== Endpoints
+
+=== Get User Details
+
+==== Request
+
+include::{snippets}/food/curl-request.adoc[]
+
+==== Response
+
+include::{snippets}/food/http-response.adoc[]
+
+== Conclusion
+
+For more information, visit the [official documentation](https://example.com/docs).
