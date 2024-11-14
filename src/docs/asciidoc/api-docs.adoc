@@ -22,11 +22,11 @@ The API uses token-based authentication. You must include an `Authorization` hea
 
 ==== Request
 
-include::{snippets}/food/curl-request.adoc[]
+include::{snippets}/food-get/curl-request.adoc[]
 
 ==== Response
 
-include::{snippets}/food/http-response.adoc[]
+include::{snippets}/food-get/http-response.adoc[]
 
 == Conclusion
 
