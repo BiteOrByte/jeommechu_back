@@ -1,6 +1,5 @@
 package com.jeommechu.login.controller
 
-import com.jeommechu.login.dto.LoginResponseDto
 import com.jeommechu.login.service.LoginService
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.ResponseEntity
@@ -13,10 +12,8 @@ import org.springframework.web.bind.annotation.RestController
 class LoginController(val loginService: LoginService) {
 
     @GetMapping("/callback")
-    fun loginCallback(request: HttpServletRequest): ResponseEntity<LoginResponseDto> {
+    fun loginCallback(request: HttpServletRequest): ResponseEntity<String> {
         val code = request.getParameter("code")
-        val accessToken = loginService.getAccessToken(code)
-
-        return loginService.loginToService(accessToken)
+        return ResponseEntity.ok(loginService.kakaoLogin(code))
     }
 }

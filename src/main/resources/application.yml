@@ -19,7 +19,10 @@ logging:
     org.hibernate.orm.jdbc.bind: trace
 
 kakao:
-  client.id: ${KAKAO_CLIENT_ID}
-  redirect.url: ${KAKAO_REDIRECT_URL}
-  token.url: https://kauth.kakao.com/oauth/token
-  user.info.url: https://kapi.kakao.com/v2/user/me
+  client-id: ${KAKAO_CLIENT_ID}
+  redirect-url: ${KAKAO_REDIRECT_URL}
+  token-url: https://kauth.kakao.com/oauth/token
+  user-info-url: https://kapi.kakao.com/v2/user/me
+
+jwt:
+  secret-key: wjaapcbWkdWKdaosgksjaqorhvmekdngkgk970127g
