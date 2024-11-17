@@ -19,3 +19,4 @@ data class UserEntity (
 
     val updatedAt: Timestamp
 )
+
