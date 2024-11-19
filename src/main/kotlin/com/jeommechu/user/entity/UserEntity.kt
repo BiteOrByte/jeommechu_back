@@ -13,9 +13,10 @@ data class UserEntity (
 
     val name: String,
 
-    val kakaoId: String,
+    val kakaoId: Long,
 
     val createdAt: Timestamp,
 
     val updatedAt: Timestamp
 )
+

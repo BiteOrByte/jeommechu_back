@@ -22,7 +22,7 @@ class UserController (private val nicknameGeneratorService: NicknameGeneratorSer
     }
 
     @GetMapping
-    fun getUser(@RequestParam(required = false) kakaoId: String): ResponseEntity<UserResponseDto> {
+    fun getUser(@RequestParam(required = false) kakaoId: Long): ResponseEntity<UserResponseDto> {
         val name = userService.getUserName(kakaoId)
         return ResponseEntity(name, HttpStatus.OK)
     }

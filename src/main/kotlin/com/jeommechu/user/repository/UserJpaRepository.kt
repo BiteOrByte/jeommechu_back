@@ -5,18 +5,17 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 
 interface UserJpaRepository : JpaRepository<UserEntity, Long> {
-
-    fun findByKakaoId(kakaoId: String): UserEntity?
+    fun findByKakaoId(kakaoId: Long): UserEntity?
 
     @Query(nativeQuery = true, value = """
-        SELECT NOUNS
-        FROM NICKNAMES ORDER BY RAND() LIMIT 1
+    SELECT nouns
+    FROM nicknames ORDER BY RAND() LIMIT 1
     """)
     fun findRandomNouns(): String
 
     @Query(nativeQuery = true, value = """
-        SELECT ADJECTIVES
-        FROM NICKNAMES ORDER BY RAND() LIMIT 1
+    SELECT adjectives
+    FROM nicknames ORDER BY RAND() LIMIT 1
     """)
     fun findRandomAdjectives(): String
 }
