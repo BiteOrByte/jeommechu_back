@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository
 class UserRepositoryImpl(private val userJpaRepository: UserJpaRepository) : UserRepository {
 
     override fun getRandomNickname(): String {
-        return userJpaRepository.findRandomNouns() + userJpaRepository.findRandomAdjectives()
+        return userJpaRepository.findRandomAdjectives() + " " + userJpaRepository.findRandomNouns()
     }
 
 }
