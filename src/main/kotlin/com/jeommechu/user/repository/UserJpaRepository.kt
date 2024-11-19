@@ -5,8 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 
 interface UserJpaRepository : JpaRepository<UserEntity, Long> {
-
-    fun findByKakaoId(kakaoId: String): UserEntity?
+    fun findByKakaoId(kakaoId: Long): UserEntity?
 
     @Query(nativeQuery = true, value = """
     SELECT nouns
