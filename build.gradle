@@ -39,6 +39,8 @@ dependencies {
 	implementation("io.jsonwebtoken:jjwt-api:0.11.5")
 	implementation group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: '2.18.1'
 
+    implementation 'io.github.oshai:kotlin-logging-jvm:7.0.0'
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	runtimeOnly 'com.h2database:h2'

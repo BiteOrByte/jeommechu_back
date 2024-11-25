@@ -15,8 +15,18 @@ spring:
 
 logging:
   level:
+    root: info
     org.hibernate.SQL: debug
     org.hibernate.orm.jdbc.bind: trace
+  file:
+    name: logs/jmc.log  # 로그 파일 경로 설정
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%file:%line %M] - %msg%n%ex{short}" # 콘솔 로그 포맷
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%file:%line %M] - %msg%n%ex" # 파일 로그 포맷
+  logback:
+    rollingPolicy:
+      max-file-size: 10MB
+      max-history: 30
 
 kakao:
   client-id: ${KAKAO_CLIENT_ID}
