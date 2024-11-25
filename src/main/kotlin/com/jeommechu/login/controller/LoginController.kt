@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/login")
 class LoginController(val loginService: LoginService) {
 
+    /**
+     * 카카오 콜백 API > 로그인/회원가입 진행 후 JWT 토큰 반환
+     */
     @GetMapping("/callback")
     fun loginCallback(request: HttpServletRequest): ResponseEntity<String> {
         val code = request.getParameter("code")
