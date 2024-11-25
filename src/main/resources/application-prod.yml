@@ -1,2 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://52.78.113.103:3306/jmc_prod
+
 server:
   port: 8080
