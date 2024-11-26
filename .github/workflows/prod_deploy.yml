@@ -54,14 +54,13 @@ jobs:
           run: |
             printf "%s" "${{ secrets.EC2_SSH_KEY }}" > private_key.pem
             chmod 600 private_key.pem
-            scp -i private_key.pem -o StrictHostKeyChecking=no -r /home/runner/work/momokddi_back/momokddi_back/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USERNAME }}/back
+            scp -i private_key.pem -o StrictHostKeyChecking=no -r /home/runner/work/momokddi_back/momokddi_back/libs/*.jar ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USERNAME }}/back
             
         # SSH로 EC2에 접속하여 웹 서버 재시작 (예: Nginx)
         - name: Restart API Server
           run: |
             ssh -o StrictHostKeyChecking=no -i private_key.pem ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} << 'EOF'
-              sudo cp -f -r /home/${{ secrets.EC2_USERNAME }}/back/* /www/prod/api/
-              sudo rm -r /home/${{ secrets.EC2_USERNAME }}/back/*
+              sudo mv -f -r /home/${{ secrets.EC2_USERNAME }}/back/* /www/prod/api/
               sudo systemctl restart prod-api
             EOF
             rm -f private_key.pem
