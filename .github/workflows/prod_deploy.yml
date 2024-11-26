@@ -35,7 +35,7 @@ jobs:
       - name: Prepare artifact
         uses: actions/upload-artifact@v4
         with:
-          name: jeommechu_back
+          name: momokddi_back
           path: build
         
   deploy:
@@ -47,14 +47,14 @@ jobs:
         - name: Download build artifact
           uses: actions/download-artifact@v4
           with:
-            name: jeommechu_back
+            name: momokddi_back
             
         # EC2 서버로 빌드된 파일을 업로드
         - name: Deploy to EC2
           run: |
             printf "%s" "${{ secrets.EC2_SSH_KEY }}" > private_key.pem
             chmod 600 private_key.pem
-            scp -i private_key.pem -o StrictHostKeyChecking=no -r /home/runner/work/jeommechu_back/jeommechu_back/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USERNAME }}/back
+            scp -i private_key.pem -o StrictHostKeyChecking=no -r /home/runner/work/momokddi_back/momokddi_back/* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USERNAME }}/back
             
         # SSH로 EC2에 접속하여 웹 서버 재시작 (예: Nginx)
         - name: Restart API Server
